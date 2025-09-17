@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confession</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f3f3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 10px 25px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      position: relative;
+    }
+
+    .btn-yes {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .btn-no {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    #response {
+      margin-top: 30px;
+      font-size: 22px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="container">
+    <h1>Can i court you? ❤️</h1>
+    <button class="btn btn-yes" onclick="handleResponse('yes')">Yes</button>
+    <button class="btn btn-no" id="noBtn">No</button>
+    <div id="response"></div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const container = document.getElementById('container');
+
+    // Move the No button to a random position within the container
+    noBtn.addEventListener('mouseenter', () => {
+      const containerRect = container.getBoundingClientRect();
+      const btnWidth = noBtn.offsetWidth;
+      const btnHeight = noBtn.offsetHeight;
+
+      const maxX = container.clientWidth - btnWidth;
+      const maxY = container.clientHeight - btnHeight;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
+    });
+
+    function handleResponse(answer) {
+      const response = document.getElementById('response');
+      if (answer === 'yes') {
+        response.innerHTML = "Yay! ❤️ I'm so happy!";
+      }
+    }
+  </script>
+
+</body>
+</html>
